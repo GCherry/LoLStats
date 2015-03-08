@@ -74,14 +74,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Models\Entities\Champion.cs" />
+    <Compile Include="Models\Entities\Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enum\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Managers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

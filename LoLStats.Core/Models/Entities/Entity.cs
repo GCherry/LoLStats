@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region References
 
-namespace LoLStats.Core.Models
+using System;
+
+#endregion
+
+namespace LoLStats.Core.Models.Entities
 {
     public class Entity
     {
-        public int Id { get; set; }
+        #region Properties
+
         public DateTime CreatedOn { get; set; }
+        public int Id { get; set; }
         public DateTime ModifiedOn { get; set; }
+
+        #endregion
     }
 }
