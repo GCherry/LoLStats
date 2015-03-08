@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿#region References
+
 using System.Web.Mvc;
+
+#endregion
 
 namespace LoLStats.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
-        }
+        #region Methods
 
         public ActionResult About()
         {
@@ -28,5 +23,14 @@ namespace LoLStats.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Index()
+        {
+            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+
+            return View();
+        }
+
+        #endregion
     }
 }
