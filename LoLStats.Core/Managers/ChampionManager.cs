@@ -14,6 +14,7 @@ namespace LoLStats.Core.Managers
     {
         #region Fields
 
+        protected static readonly string gncRiotAPIKey = "c92b6d81-20ff-438c-a966-503fa839c3e5";
         private LoLDBContext _lolDBContext = new LoLDBContext();
 
         #endregion
@@ -41,6 +42,16 @@ namespace LoLStats.Core.Managers
         }
 
         public Champion GetOneById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateAllChampionsFromRiotApi(Champion champ)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateNewChampionsFromRiotApi(Champion champ)
         {
             throw new NotImplementedException();
         }
