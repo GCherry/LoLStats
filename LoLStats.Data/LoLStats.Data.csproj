@@ -74,7 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Context\LoLDBContext.cs" />
     <Compile Include="Migrations\201503090257591_init.cs" />
     <Compile Include="Migrations\201503090257591_init.Designer.cs">
@@ -91,14 +90,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LoLStats.Core\LoLStats.Core.csproj">
-      <Project>{773086c7-5353-45f9-a9c6-aa1d05f8b35d}</Project>
-      <Name>LoLStats.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoLStats.Shared\LoLStats.Shared.csproj">
+      <Project>{5296ee01-d080-4412-91c3-851ce6c16456}</Project>
+      <Name>LoLStats.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

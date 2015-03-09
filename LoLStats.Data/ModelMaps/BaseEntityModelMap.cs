@@ -2,7 +2,7 @@
 
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using LoLStats.Core.Models.Entities;
+using LoLStats.Shared.Models.Entities;
 
 #endregion
 

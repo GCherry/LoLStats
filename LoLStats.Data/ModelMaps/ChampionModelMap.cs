@@ -1,6 +1,6 @@
 ﻿#region References
 
-using LoLStats.Core.Models.Entities;
+using LoLStats.Shared.Models.Entities;
 
 #endregion
 

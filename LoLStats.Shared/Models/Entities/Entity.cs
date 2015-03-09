@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace LoLStats.Core.Models.Entities
+namespace LoLStats.Shared.Models.Entities
 {
     public class Entity
     {

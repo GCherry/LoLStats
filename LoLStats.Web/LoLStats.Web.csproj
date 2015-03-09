@@ -348,6 +348,10 @@
       <Project>{d49c56a3-c81c-4d24-92dc-e129a0ce595d}</Project>
       <Name>LoLStats.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LoLStats.Shared\LoLStats.Shared.csproj">
+      <Project>{5296ee01-d080-4412-91c3-851ce6c16456}</Project>
+      <Name>LoLStats.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
