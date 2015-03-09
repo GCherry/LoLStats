@@ -75,11 +75,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Context\LoLDBContext.cs" />
+    <Compile Include="Migrations\201503090257591_init.cs" />
+    <Compile Include="Migrations\201503090257591_init.Designer.cs">
+      <DependentUpon>201503090257591_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelMaps\BaseEntityModelMap.cs" />
+    <Compile Include="ModelMaps\ChampionModelMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Context\" />
-    <Folder Include="ModelMaps\" />
+    <EmbeddedResource Include="Migrations\201503090257591_init.resx">
+      <DependentUpon>201503090257591_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoLStats.Core\LoLStats.Core.csproj">

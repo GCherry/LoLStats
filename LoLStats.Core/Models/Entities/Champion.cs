@@ -8,6 +8,7 @@
         public string Name { get; set; }
         public int RiotId { get; set; }
         public string Title { get; set; }
+        public bool Active { get; set; }
 
         #endregion
     }
