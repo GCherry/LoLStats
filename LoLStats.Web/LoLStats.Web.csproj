@@ -338,6 +338,7 @@
     <Content Include="Views\Champion\Details.cshtml" />
     <Content Include="Views\Champion\Edit.cshtml" />
     <Content Include="Views\Champion\Index.cshtml" />
+    <Content Include="Views\Champion\UpdateChampions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

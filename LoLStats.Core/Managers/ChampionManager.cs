@@ -14,7 +14,6 @@ namespace LoLStats.Core.Managers
     {
         #region Fields
 
-        protected static readonly string gncRiotAPIKey = "c92b6d81-20ff-438c-a966-503fa839c3e5";
         private LoLDBContext _lolDBContext = new LoLDBContext();
 
         #endregion
