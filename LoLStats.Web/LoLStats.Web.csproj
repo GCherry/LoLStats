@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChampionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -332,6 +333,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Champion\Create.cshtml" />
+    <Content Include="Views\Champion\Delete.cshtml" />
+    <Content Include="Views\Champion\Details.cshtml" />
+    <Content Include="Views\Champion\Edit.cshtml" />
+    <Content Include="Views\Champion\Index.cshtml" />
+    <Content Include="Views\Champion\UpdateChampions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +354,10 @@
     <ProjectReference Include="..\LoLStats.Data\LoLStats.Data.csproj">
       <Project>{d49c56a3-c81c-4d24-92dc-e129a0ce595d}</Project>
       <Name>LoLStats.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoLStats.Shared\LoLStats.Shared.csproj">
+      <Project>{5296ee01-d080-4412-91c3-851ce6c16456}</Project>
+      <Name>LoLStats.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

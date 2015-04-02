@@ -2,8 +2,8 @@
 
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using LoLStats.Core.Models.Entities;
 using LoLStats.Data.ModelMaps;
+using LoLStats.Shared.Models.Entities;
 
 #endregion
 
@@ -37,7 +37,7 @@ namespace LoLStats.Data.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            
+
             modelBuilder.Configurations.Add(new ChampionModelMap());
         }
 
