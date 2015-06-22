@@ -70,6 +70,7 @@ namespace LoLStats.Web.Controllers
 
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+       
             HttpResponseMessage response = client.GetAsync(urlParameters).Result;
 
             //if (response.IsSuccessStatusCode)
