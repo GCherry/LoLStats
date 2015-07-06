@@ -3,11 +3,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using LoLStats.Data.Context;
 using LoLStats.Shared.Interfaces;
 using LoLStats.Shared.Models.Entities;
@@ -65,13 +67,26 @@ namespace LoLStats.Web.Controllers
             var urlRequest = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?api_key=" + gncRiotAPIKey;
             var urlParameters = "?api_key=" + gncRiotAPIKey;
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(urlRequest);
+            //HttpClient client = new HttpClient();
+            //client.BaseAddress = new Uri(urlRequest);
 
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
        
-            HttpResponseMessage response = client.GetAsync(urlParameters).Result;
+            //HttpResponseMessage response = client.GetAsync(urlParameters).Result;
+
+            HttpWebRequest request = WebRequest.Create(urlRequest) as HttpWebRequest;
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            {
+
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    var objText = reader.ReadToEnd();
+                    Champion champ = (Champion)js.Deserialize(objText, typeof(Champion));
+                }
+                
+            }
 
             //if (response.IsSuccessStatusCode)
             //{

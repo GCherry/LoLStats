@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>65ed9a5a-6ed0-4148-8a68-736502bd6ee1</ProjectGuid>
+    <ProjectGuid>{4F545B42-3287-4792-8FA5-93266136287B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LoLStats.Test</RootNamespace>

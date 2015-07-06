@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLStats.Data", "LoLStats.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLStats.Shared", "LoLStats.Shared\LoLStats.Shared.csproj", "{5296EE01-D080-4412-91C3-851CE6C16456}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLStats.Test", "LoLStats.Test\LoLStats.Test.csproj", "{4F545B42-3287-4792-8FA5-93266136287B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5296EE01-D080-4412-91C3-851CE6C16456}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5296EE01-D080-4412-91C3-851CE6C16456}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5296EE01-D080-4412-91C3-851CE6C16456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F545B42-3287-4792-8FA5-93266136287B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F545B42-3287-4792-8FA5-93266136287B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F545B42-3287-4792-8FA5-93266136287B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F545B42-3287-4792-8FA5-93266136287B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
