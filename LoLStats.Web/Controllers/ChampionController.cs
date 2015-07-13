@@ -2,17 +2,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 using LoLStats.Data.Context;
 using LoLStats.Shared.Interfaces;
 using LoLStats.Shared.Models.Entities;
+using LoLStats.Shared.Models.RiotAPIModels;
+using Newtonsoft.Json;
 
 #endregion
 
@@ -22,9 +20,9 @@ namespace LoLStats.Web.Controllers
     {
         #region Fields
 
+        protected static readonly string GncRiotApiKey = "c92b6d81-20ff-438c-a966-503fa839c3e5";
         private readonly IChampionManager _championManager;
-        private readonly LoLDBContext db = new LoLDBContext();
-        protected static readonly string gncRiotAPIKey = "c92b6d81-20ff-438c-a966-503fa839c3e5";
+        private readonly LoLDBContext _db = new LoLDBContext();
 
         #endregion
 
@@ -38,69 +36,56 @@ namespace LoLStats.Web.Controllers
 
         #endregion
 
-
         #region Methods
-  
+
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var champion = db.Champions.Find(id);
+            var champion = _db.Champions.Find(id);
             if (champion == null)
             {
                 return HttpNotFound();
             }
             return View(champion);
         }
-    
-        public ActionResult Index()
-        {
-            return View(db.Champions.ToList());
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult GetAllChampions()
         {
-            var urlRequest = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?api_key=" + gncRiotAPIKey;
-            var urlParameters = "?api_key=" + gncRiotAPIKey;
+            var urlRequest = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?api_key=" + GncRiotApiKey;
 
-            //HttpClient client = new HttpClient();
-            //client.BaseAddress = new Uri(urlRequest);
-
-            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-       
-            //HttpResponseMessage response = client.GetAsync(urlParameters).Result;
-
-            HttpWebRequest request = WebRequest.Create(urlRequest) as HttpWebRequest;
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            var champStatic = new ChampionListStatic();
+            var getRequest = (HttpWebRequest) WebRequest.Create(urlRequest);
+            using (var getResponse = getRequest.GetResponse())
+            using (var reader = new StreamReader(getResponse.GetResponseStream()))
             {
-
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    JavaScriptSerializer js = new JavaScriptSerializer();
-                    var objText = reader.ReadToEnd();
-                    Champion champ = (Champion)js.Deserialize(objText, typeof(Champion));
-                }
-                
+                var responseText = reader.ReadToEnd();
+                champStatic = JsonConvert.DeserializeObject<ChampionListStatic>(responseText);
             }
 
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    Champion champ = response.Content.ReadAsAsync<Champion>().Result;
+            var champList = champStatic.Champions.Select(champ => new Champion()
+            {
+                Active = true, 
+                Key = champ.Value.Key, 
+                Name = champ.Value.Name, 
+                RiotId = champ.Value.Id, 
+                Title = champ.Value.Title, 
+                CreatedOn = DateTime.Now, 
+                ModifiedOn = DateTime.Now
+            }).ToList();
 
-            //    foreach (var x in champ)
-            //    {
-                    
-            //    }
-
-
-            //}
+            _championManager.AddOrUpdateAllChampionsFromRiotApi(champList);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Index()
+        {
+            return View(_db.Champions.ToList());
         }
 
         #endregion
