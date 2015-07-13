@@ -1,6 +1,7 @@
 ﻿#region References
 
 using System;
+using System.Collections.Generic;
 using LoLStats.Shared.Models.Entities;
 
 #endregion
@@ -9,7 +10,7 @@ namespace LoLStats.Shared.Interfaces
 {
     public interface IChampionManager : IManager<Champion>
     {
-        Boolean UpdateAllChampionsFromRiotApi(Champion champ);
-        Boolean UpdateNewChampionsFromRiotApi(Champion champ);
+        Boolean AddOrUpdateAllChampionsFromRiotApi(IEnumerable<Champion> champ);
+        Champion GetOneByRiotId(int riotId);
     }
 }
