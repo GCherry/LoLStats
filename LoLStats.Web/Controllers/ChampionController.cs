@@ -56,6 +56,7 @@ namespace LoLStats.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult GetAllChampions()
         {
+            //TODO abstract this from this class
             var urlRequest = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?api_key=" + GncRiotApiKey;
 
             var champStatic = new ChampionListStatic();
