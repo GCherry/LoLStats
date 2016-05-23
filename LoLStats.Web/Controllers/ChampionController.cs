@@ -81,7 +81,8 @@ namespace LoLStats.Web.Controllers
 
             _championManager.AddOrUpdateAllChampionsFromRiotApi(champList);
 
-            return RedirectToAction("Index", "Home");
+            //JC first fix... Simple but important... JC Dev OP ;)
+            return RedirectToAction("Index", "Champion");
         }
 
         public ActionResult Index()
