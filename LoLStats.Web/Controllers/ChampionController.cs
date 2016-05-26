@@ -34,6 +34,7 @@ namespace LoLStats.Web.Controllers
             _championManager = manager;
         }
 
+
         #endregion
 
         #region Methods
@@ -70,13 +71,13 @@ namespace LoLStats.Web.Controllers
 
             var champList = champStatic.Champions.Select(champ => new Champion()
             {
-                Active = true, 
-                Key = champ.Value.Key, 
+                //Active = true, 
+                //Key = champ.Value.Key, 
                 Name = champ.Value.Name, 
-                RiotId = champ.Value.Id, 
+                //RiotId = champ.Value.Id, 
                 Title = champ.Value.Title, 
                 CreatedOn = DateTime.Now, 
-                ModifiedOn = DateTime.Now
+                //ModifiedOn = DateTime.Now
             }).ToList();
 
             _championManager.AddOrUpdateAllChampionsFromRiotApi(champList);
@@ -85,9 +86,21 @@ namespace LoLStats.Web.Controllers
             return RedirectToAction("Index", "Champion");
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(_db.Champions.ToList());
+
+            var Champions = from s in _db.Champions
+                            orderby s.Name
+                            select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+
+                Champions = _db.Champions.Where(s => s.Name.Contains(searchString)).OrderBy(s => s.Name);
+            }
+
+            return View(Champions);
+
         }
 
         #endregion
