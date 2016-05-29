@@ -83,10 +83,10 @@ namespace LoLStats.Web.Controllers
             _championManager.AddOrUpdateAllChampionsFromRiotApi(champList);
 
             //JC first fix... Simple but important... JC Dev OP ;)
-            return RedirectToAction("Index", "Champion");
+            return RedirectToAction("Champion", "Champion");
         }
 
-        public ActionResult Index(string searchString)
+        public ActionResult Champion(string searchString)
         {
 
             var Champions = from s in _db.Champions
@@ -100,6 +100,13 @@ namespace LoLStats.Web.Controllers
             }
 
             return View(Champions);
+
+        }
+
+        public ActionResult Index()
+        {
+
+            return View();
 
         }
 

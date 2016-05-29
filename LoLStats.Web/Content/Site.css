@@ -544,74 +544,13 @@ input[type="checkbox"].input-validation-error {
 }
 
 
-/* tables
-----------------------------------------------------------*/
-/*table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-top: 0.75em;
-    border: 0 none;
-}
+/* 
+    Tables 
 
-th {
-    font-size: 1.2em;
-    text-align: left;
-    border: none 0px;
-    padding-left: 0;
-}
-
-    th a {
-        display: block;
-        position: relative;
-    }
-
-    th a:link, th a:visited, th a:active, th a:hover {
-        color: #333;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 0;
-    }
-
-    th a:hover {
-        color: #000;
-    }
-
-    th.asc a, th.desc a {
-        margin-right: .75em;
-    }
-
-    th.asc a:after, th.desc a:after {
-        display: block;
-        position: absolute;
-        right: 0em;
-        top: 0;
-        font-size: 0.75em;
-    }
-
-    th.asc a:after {
-        content: '▲';
-    }
-
-    th.desc a:after {
-        content: '▼';
-    }
-
-td {
-    padding: 0.25em 2em 0.25em 0em;
-    border: 0 none;
-}
-
-
-tr.pager td {
-    padding: 0 0.25em 0 0;
-}*/
-
-
-
+*/
 .table-title {
   display: block;
   margin: auto;
-  /*max-width: 600px;*/
   padding:5px;
   width: 100%;
 }
@@ -635,7 +574,6 @@ tr.pager td {
   border-collapse: collapse;
   height: 320px;
   margin: auto;
-  /*max-width: 600px;*/
   padding:5px;
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -647,7 +585,7 @@ th {
   background:#1b1e24;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
-  font-size:21px;
+  font-size:18px;
   font-weight: 100;
   padding:24px;
   text-align:left;
@@ -660,9 +598,6 @@ tr {
   border-top: 1px solid #C1C3D1;
   border-bottom: 1px solid #C1C3D1;
   color:#666B85;
-  font-size:16px;
-  font-weight:normal;
-  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
  
 tr:hover td {
@@ -678,7 +613,7 @@ td {
   text-align:left;
   vertical-align:middle;
   font-weight:300;
-  font-size:18px;
+  font-size:16px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
 }

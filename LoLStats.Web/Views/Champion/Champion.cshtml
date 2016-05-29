@@ -1,0 +1,66 @@
+﻿@model IEnumerable<LoLStats.Shared.Models.Entities.Champion>
+
+@{
+    ViewBag.Title = "Champions";
+}
+
+<h2>Champion</h2>
+
+<p>
+    @using (Html.BeginForm())
+    {
+    <p>
+        @*Champion: @Html.TextBox("SearchString")*@
+        <input type="text" class="form-control" placeholder="Champion Name" name="SearchString" id="SearchString">
+        <input type="submit" value="Filter" id="btnFilter" style="margin-left:0em; width: 5em" class="btn-custom" />
+    </p>
+    }
+    </p>
+
+    <table class="table-fill" id="ChampionGrid">
+        <tr>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-left">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="text-left">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td class="text-left">
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td class="text-center">
+                    <a href="~/Champion/Details?id=@item.Id"><input type="button" value="Details" class="btn-custom" /></a>
+                </td>
+            </tr>
+        }
+    </table>
+
+
+    <form method="post" action="Champion/GetAllChampions" enctype="multipart/form-data">
+
+        @Html.AntiForgeryToken()
+
+        <fieldset>
+            <legend>Login</legend>
+
+            @*<div class="editor-label">
+                    <label>&nbsp;</label>
+                    <input type="submit" value="Get All Champions" class="submit" />
+                </div>*@
+        </fieldset>
+    </form>

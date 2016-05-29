@@ -339,6 +339,7 @@
     <Content Include="Views\Champion\Delete.cshtml" />
     <Content Include="Views\Champion\Details.cshtml" />
     <Content Include="Views\Champion\Index.cshtml" />
+    <Content Include="Views\Champion\Champion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
