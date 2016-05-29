@@ -7,68 +7,76 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Champion</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
+    <div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
+    </div>
+    <div>
+        <h4>Champion</h4>
+        <hr />
+        <dl class="dl-horizontal" style="padding-left:50px">
+            <dt>
+                @Html.DisplayNameFor(model => model.Key)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Key)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Key)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Key)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RiotId)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RiotId)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Active)
+            </dd>
+        </dl>
+        
+    </div>
+    <div>
+        <div class="float-right">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedOn)
-        </dd>
-
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+<div>
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
+
+<script>
+    //JS to dynamically gather and display all Champion_Arts for the specified Champion.
+    //      the Champion_Arts are splash arts of the champs many skins. Some champs have 2 while 
+    //      others could have up to 7 skins. 
+
+
+</script>

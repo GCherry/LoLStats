@@ -2,7 +2,9 @@
 
 @{
     ViewBag.Title = "Champions";
+    string extension = ".jpg";
 }
+
 
 <h2>Champion</h2>
 
@@ -35,6 +37,7 @@
         {
             <tr>
                 <td class="text-left">
+                    <img src="~/Images/Champion_Icons/@item.Key@extension" alt="Icon" width="40px" height="40px" />
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td class="text-left">
