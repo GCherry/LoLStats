@@ -4,79 +4,156 @@
     ViewBag.Title = "Details";
 }
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=3.0.1"></script>
+
 <h2>Details</h2>
 
 <div>
-    <div>
-
-    </div>
-    <div>
+    <div class="float-left" style="width:49%">
         <h4>Champion</h4>
         <hr />
-        <dl class="dl-horizontal" style="padding-left:50px">
+        <dl class="dl-horizontal" style="padding-left:50px;">
             <dt>
-                @Html.DisplayNameFor(model => model.Key)
+                    @Html.DisplayNameFor(model => model.Name)
             </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.Key)
+                    @Html.DisplayFor(model => model.Name)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Title)
             </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Title)
+                    @Html.DisplayFor(model => model.Title)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.CreatedOn)
+                    @Html.DisplayNameFor(model => model.CreatedOn)
             </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.CreatedOn)
+                    @Html.DisplayFor(model => model.CreatedOn)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
+                    @Html.DisplayNameFor(model => model.ModifiedOn)
             </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.ModifiedOn)
+                    @Html.DisplayFor(model => model.ModifiedOn)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Active)
+                    @Html.DisplayNameFor(model => model.Active)
             </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.Active)
+                    @Html.DisplayFor(model => model.Active)
             </dd>
         </dl>
-        
-    </div>
-    <div>
-        <div class="float-right">
-
+        <div>
+            @Html.ActionLink("Back to List", "Index")
         </div>
     </div>
+    <div class="float-right" id="rotating-item-wrapper" style="width:49%">
+    </div>
 </div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-<script>
-    //JS to dynamically gather and display all Champion_Arts for the specified Champion.
-    //      the Champion_Arts are splash arts of the champs many skins. Some champs have 2 while 
-    //      others could have up to 7 skins. 
+<script type="text/javascript">
+    //using JS - for practice
+    //      Idea is to dynamically load the splash arts for the specified champ
+    var champion = '@(Model.Key)';      //declare var champ. used key because that is how riot sets the image name 
 
 
+    // I'm sure there is a better way. I just can't figure it out right now
+    //          need to add a check to see if the image url exist.
+    for (var i = 1; i <= 13; i++) { //max number of img possible for a champ
+
+        var div = document.getElementById("rotating-item-wrapper"); //find the div for the images
+        var img = document.createElement("img");    //start creating the img
+        var imageUrl = "../Images/Champion_Splash/" + champion + " (" + i + ").jpg";
+       
+        //function imageExists(url, callback) {
+        //    var img = new Image();
+        //    img.onload = function () { callback(true); };
+        //    img.onerror = function () { callback(false); };
+        //    img.src = url;
+        //}
+
+        //imageExists(imageUrl, function (exists) {
+        //    img.src = imageUrl; //set the url based on the i value
+        //    img.className = "rotating-item";        // add specific class for image rotation
+        //    img.style = 'width:100%;height:100%; padding-top:50px;';    //add specific styling to fit the page
+        //    img.id = champion + i     //add ID attribute for possible use later
+        //    img.onerror = function () {     // when the img tag errors in anyway then
+        //        this.removeAttribute("Class");  //remove the class attr so it is not part of the rotation
+        //        this.removeAttribute("src");    //remove the url attr 
+        //        this.removeAttribute("style");
+        //        this.style.display = "none";
+
+        //    }
+
+        //    div.appendChild(img);   // add the new element to the div
+        //});
+
+
+        img.src = imageUrl; //set the url based on the i value
+        img.className = "rotating-item";        // add specific class for image rotation
+        img.style = 'width:100%;height:100%; padding-top:50px;';    //add specific styling to fit the page
+        img.id = champion + i     //add ID attribute for possible use later
+        img.onerror = function () {     // when the img tag errors in anyway then
+            this.removeAttribute("Class");  //remove the class attr so it is not part of the rotation
+            this.removeAttribute("src");    //remove the url attr 
+            this.removeAttribute("style");
+            this.style.display = "none";
+
+        }
+
+        div.appendChild(img);   // add the new element to the div
+
+
+     }  // increase the value to create the next image
+</script>
+
+
+<script type="text/javascript">
+
+    $(window).load(function cmon() { //start after HTML, images have loaded
+
+        var InfiniteRotator =
+        {
+            init: function () {
+                //initial fade-in time (in milliseconds)
+                var initialFadeIn = 900;
+
+                //interval between items (in milliseconds)
+                var itemInterval = 4000;
+
+                //cross-fade time (in milliseconds)
+                var fadeTime = 2000;
+
+                //count number of items
+                var numberOfItems = $('.rotating-item').length;
+
+                //set current item
+                var currentItem = 0;
+
+                //show first item
+                $('.rotating-item').eq(currentItem).fadeIn(initialFadeIn);
+
+                //loop through the items
+                var infiniteLoop = setInterval(function () {
+                    $('.rotating-item').eq(currentItem).fadeOut(fadeTime);
+
+                    if (currentItem == numberOfItems - 1) {
+                        currentItem = 0;
+                    } else {
+                        currentItem++;
+                    }
+                    $('.rotating-item').eq(currentItem).fadeIn(fadeTime);
+
+                }, itemInterval);
+            }
+        };
+
+        InfiniteRotator.init();
+
+    });
 </script>
